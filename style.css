@@ -1,4 +1,23 @@
 /* =========================
+   ROOT VARIABLES (THEMES)
+========================= */
+:root {
+  --bg: #0b0f1a;
+  --text: #ffffff;
+  --glass: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.15);
+  --accent: #a0c4ff;
+}
+
+body.light {
+  --bg: #f5f7fb;
+  --text: #111111;
+  --glass: rgba(0, 0, 0, 0.06);
+  --border: rgba(0, 0, 0, 0.1);
+  --accent: #4361ee;
+}
+
+/* =========================
    GLOBAL RESET
 ========================= */
 * {
@@ -13,9 +32,50 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #0b0f1a;
-  color: #ffffff;
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* =========================
+   LOADER
+========================= */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#loader h1 {
+  font-size: 3rem;
+}
+
+#loader p {
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* =========================
+   THEME TOGGLE
+========================= */
+#themeToggle {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 1000;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
 }
 
 /* =========================
@@ -23,8 +83,7 @@ body {
 ========================= */
 canvas#bg {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   z-index: -1;
 }
 
@@ -34,7 +93,7 @@ canvas#bg {
 .cursor {
   width: 10px;
   height: 10px;
-  background: white;
+  background: var(--text);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -45,13 +104,14 @@ canvas#bg {
 .cursor-glow {
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--accent);
+  opacity: 0.2;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 998;
   transform: translate(-50%, -50%);
-  filter: blur(12px);
+  filter: blur(16px);
 }
 
 /* =========================
@@ -68,7 +128,7 @@ canvas#bg {
 .section h2 {
   font-size: 3rem;
   margin-bottom: 30px;
-  background: linear-gradient(90deg, #ffffff, #a0c4ff);
+  background: linear-gradient(90deg, var(--text), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -78,21 +138,12 @@ canvas#bg {
 ========================= */
 .hero h1 {
   font-size: 4.5rem;
-  font-weight: 700;
 }
 
 .subtitle {
   font-size: 1.5rem;
+  color: var(--accent);
   margin-top: 10px;
-  color: #a0c4ff;
-}
-
-.intro {
-  max-width: 600px;
-  margin-top: 30px;
-  line-height: 1.7;
-  font-size: 1.1rem;
-  opacity: 0.9;
 }
 
 .hero-buttons {
@@ -101,82 +152,74 @@ canvas#bg {
   gap: 20px;
 }
 
+.hero-buttons a,
 .hero-buttons button {
   padding: 14px 36px;
   border-radius: 50px;
   border: none;
-  cursor: pointer;
-  font-size: 1rem;
+  background: var(--text);
+  color: var(--bg);
   font-weight: 600;
-  color: #000;
-  background: #ffffff;
-  transition: transform 0.2s ease;
-}
-
-/* =========================
-   GLASS CARDS
-========================= */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 30px;
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.card h3 {
-  margin-bottom: 15px;
-  color: #a0c4ff;
-}
-
-.card ul li {
-  margin-bottom: 8px;
-  opacity: 0.9;
-}
-
-/* =========================
-   EXPERIENCE
-========================= */
-.experience-block {
-  margin-bottom: 40px;
-}
-
-.experience-block h3 {
-  font-size: 1.4rem;
-}
-
-.experience-block span {
-  display: block;
-  margin: 8px 0 15px;
-  opacity: 0.7;
-}
-
-.experience-block a {
-  color: #a0c4ff;
+  cursor: pointer;
   text-decoration: none;
 }
 
 /* =========================
-   EDUCATION & CONTACT
+   PROJECTS (3D CARDS)
 ========================= */
-.education ul li {
-  margin-bottom: 12px;
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
 }
 
-.contact p {
+.project-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(14px);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover {
+  transform: rotateY(12deg) rotateX(8deg) scale(1.05);
+}
+
+.project-card h3 {
   margin-bottom: 10px;
+  color: var(--accent);
 }
 
-.declaration {
-  margin-top: 30px;
-  font-size: 0.9rem;
-  opacity: 0.6;
+.project-card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* =========================
+   CONTACT FORM
+========================= */
+form {
+  max-width: 500px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text);
+}
+
+textarea {
+  resize: none;
+  height: 120px;
 }
 
 /* =========================
@@ -188,15 +231,14 @@ canvas#bg {
 }
 
 /* =========================
-   MAGNETIC BUTTON
+   MAGNETIC
 ========================= */
 .magnetic {
   position: relative;
-  overflow: hidden;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 @media (max-width: 768px) {
   .section {
