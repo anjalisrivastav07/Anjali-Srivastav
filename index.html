@@ -4,29 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anjali Srivastav | Portfolio</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
+
 <body>
 
+  <!-- Custom Cursor -->
   <div class="cursor"></div>
+  <div class="cursor-glow"></div>
 
-  <section class="hero">
-    <h1>Anjali Srivastav</h1>
-    <p>Web Developer & Digital Marketing Specialist</p>
+  <!-- Three.js Canvas -->
+  <canvas id="bg"></canvas>
+
+  <!-- HERO -->
+  <section class="hero glass">
+    <h1 class="reveal">Anjali Srivastav</h1>
+    <p class="reveal">Web Developer & Digital Marketing Specialist</p>
+
+    <div class="hero-buttons reveal">
+      <button class="magnetic">View Work</button>
+      <button class="magnetic">Contact Me</button>
+    </div>
   </section>
 
-  <section class="about reveal">
-    <h2>About Me</h2>
-    <p>
+  <!-- ABOUT -->
+  <section class="about glass parallax">
+    <h2 class="reveal">About Me</h2>
+    <p class="reveal">
       I am a Web Developer and Digital Marketing Specialist with 3+ years of
       experience building responsive, SEO-optimized websites. I combine
       development skills with data-driven digital growth strategies.
     </p>
   </section>
 
-  <section class="skills reveal">
-    <h2>Skills</h2>
-    <ul>
+  <!-- SKILLS -->
+  <section class="skills glass parallax">
+    <h2 class="reveal">Skills</h2>
+    <ul class="reveal">
       <li>HTML, CSS, JavaScript, PHP</li>
       <li>Responsive Web Design</li>
       <li>SEO & Digital Marketing</li>
@@ -34,22 +57,25 @@
     </ul>
   </section>
 
-  <section class="experience reveal">
-    <h2>Experience</h2>
-    <p>
+  <!-- EXPERIENCE -->
+  <section class="experience glass parallax">
+    <h2 class="reveal">Experience</h2>
+    <p class="reveal">
       <strong>Zeonzex LLP (2022 – 2025)</strong><br />
       Designed and deployed business websites, improved organic traffic,
       executed SEO strategies, and mentored junior team members.
     </p>
   </section>
 
-  <section class="contact reveal">
-    <h2>Contact</h2>
-    <p>Email: anjalisrivastav7066@gmail.com</p>
-    <p>Phone: +91 7764947575</p>
-    <p>Location: Siwan, Bihar, India</p>
+  <!-- CONTACT -->
+  <section class="contact glass">
+    <h2 class="reveal">Contact</h2>
+    <p class="reveal">Email: anjalisrivastav7066@gmail.com</p>
+    <p class="reveal">Phone: +91 7764947575</p>
+    <p class="reveal">Location: Siwan, Bihar, India</p>
   </section>
 
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
