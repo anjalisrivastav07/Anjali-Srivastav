@@ -1,61 +1,152 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* BODY */
 body {
   background: #0a0a0a;
-  color: white;
-  font-family: "Segoe UI", system-ui;
+  color: #ffffff;
+  font-family: "Segoe UI", system-ui, sans-serif;
   overflow-x: hidden;
+  cursor: none;
 }
 
+/* THREE.JS BACKGROUND */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+/* SECTIONS */
 section {
   min-height: 100vh;
   padding: 120px 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
-h1 {
+/* HERO */
+.hero {
+  text-align: center;
+}
+
+.hero h1 {
   font-size: 4rem;
+  margin-bottom: 20px;
 }
 
+.hero p {
+  font-size: 1.2rem;
+  color: #d0d0d0;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button.magnetic {
+  padding: 16px 36px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: white;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: none;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+/* GLASSMORPHISM */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 24px;
+  margin: 60px auto;
+  max-width: 1200px;
+}
+
+/* HEADINGS */
 h2 {
   font-size: 3rem;
   margin-bottom: 20px;
 }
 
+/* TEXT */
 p, li {
   color: #cfcfcf;
   font-size: 1.1rem;
   line-height: 1.8;
+  max-width: 800px;
 }
 
-.hero {
-  background: radial-gradient(circle at top, #111, #000);
+/* LIST */
+ul {
+  list-style: none;
 }
 
+li {
+  margin-bottom: 10px;
+}
+
+/* SCROLL REVEAL */
 .reveal {
   opacity: 0;
   transform: translateY(80px);
-  transition: all 1s ease;
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+/* PARALLAX */
+.parallax {
+  transform: translateZ(0);
 }
 
+/* CUSTOM CURSOR */
 .cursor {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border: 2px solid white;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+  z-index: 1000;
+}
+
+.cursor-glow {
+  width: 120px;
+  height: 120px;
+  background: rgba(255,255,255,0.15);
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 100px 6%;
+  }
 }
